@@ -1,4 +1,6 @@
 import { Element as PolymerElement } from 'polymer/polymer-element';
+import * as firebase from 'firebase';
+import 'polymer/lib/elements/dom-if';
 
 import 'app-route/app-location';
 import 'app-route/app-route';
@@ -13,11 +15,19 @@ import 'iron-icons/iron-icons';
 import 'iron-pages/iron-pages';
 import 'paper-icon-button/paper-icon-button';
 
+import config from 'config';
 import 'shared-styles';
 
+import 'modules/auth/auth';
 import 'modules/dashboard/container';
 
-export class FeedbackApp extends PolymerElement {
+import ReduxMixin from 'store';
+import {
+  logout,
+  selectUser,
+} from 'modules/auth';
+
+export class FeedbackApp extends ReduxMixin(PolymerElement) {
   static get template() {
     return `
       <style include="shared-styles">
@@ -64,9 +74,9 @@ export class FeedbackApp extends PolymerElement {
           pattern="/:page"
           data="{{routeData}}"
           tail="{{subroute}}"></app-route>
-  
+
       <template is="dom-if" if="[[!user]]">
-        <tardis-login></tardis-login>
+        <feedback-login></feedback-login>
       </template>
   
       <template is="dom-if" if="[[user]]">
@@ -109,7 +119,7 @@ export class FeedbackApp extends PolymerElement {
 
   constructor() {
     super();
-    // firebase.initializeApp(config.firebase);
+    firebase.initializeApp(config.firebase);
   }
 
   // properties, observers, etc. are identical to 2.x
@@ -121,8 +131,7 @@ export class FeedbackApp extends PolymerElement {
       rootPattern: String,
       user: {
         type: Object,
-        value: { name: 'tester' },
-        // statePath: selectUser,
+        statePath: selectUser,
       },
     };
   }
@@ -142,7 +151,7 @@ export class FeedbackApp extends PolymerElement {
   }
 
   signOut () {
-    // this.dispatch(logout());
+    this.dispatch(logout());
   }
 }
 

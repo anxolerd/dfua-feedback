@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const env = 'dev';
+const env = 'development';
 
 const webpackPath = __dirname;
 const rootPath = path.resolve(webpackPath, '..');
@@ -35,7 +35,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      config: path.resolve(srcPath, 'config', ''),
+      config: path.resolve(srcPath, 'config', env),
     },
     extensions: ['.js'],
     modules: [srcPath, 'node_modules', 'node_modules/@polymer'],
