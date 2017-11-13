@@ -1,0 +1,31 @@
+{
+  "name": "dfua-feedback",
+  "version": "0.0.1",
+  "description": "Session Feedback System. Hoverboard compatible",
+  "main": "index.js",
+  "repository": "git@github.com:unreadableusername/dfua-feedback.git",
+  "author": "Oleksandr Pidlisnyi <oleksandr.pidlisnyi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "NODE_ENV=development webpack-dev-server --config ./webpack/webpack.dev.conf.js",
+    "build": "webpack --config ./webpack/webpack.prod.conf.js",
+    "deploy": "firebase deploy"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.1.1",
+    "html-webpack-plugin": "^2.30.1",
+    "uglify-es-webpack-plugin": "^0.10.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.2"
+  },
+  "dependencies": {
+    "@polymer/app-layout": "^3.0.0-pre.1",
+    "@polymer/app-route": "^3.0.0-pre.1",
+    "@polymer/iron-icon": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/iron-pages": "^3.0.0-pre.1",
+    "@polymer/paper-icon-button": "^3.0.0-pre.1",
+    "@polymer/polymer": "^3.0.0-pre.1"
+  }
+}
