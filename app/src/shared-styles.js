@@ -163,7 +163,14 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
       .markdown-html a {
         color: var(--default-primary-color);
         text-decoration: none;
-      }      
+      }
+
+      .error {
+        border: 1px var(--paper-red-500) solid;
+        color: var(--paper-red-500);
+        border-radius: 3px;
+        padding: 8px;
+      }
     </style>
   </template>
 </dom-module>`;
